@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code From Git') {
             steps {
-                git branch: 'main',
+                git branch: 'master',
                     url: 'https://github.com/NolaniA/ttb-spark-test-automation.git'
             }
         }
