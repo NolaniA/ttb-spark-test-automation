@@ -1,0 +1,13 @@
+# Core Testing Framework
+robotframework>=7.0.0
+
+# Web Testing (Playwright-based Browser Library)
+robotframework-browser>=18.0.0
+
+# API Testing (Requests-based HTTP Library)
+robotframework-requests>=0.9.7
+requests>=2.31.0
+
+# Mobile Testing (Appium-based Mobile Library)
+robotframework-appiumlibrary>=2.1.0
+Appium-Python-Client>=3.2.0

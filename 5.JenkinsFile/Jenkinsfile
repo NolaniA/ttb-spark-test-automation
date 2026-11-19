@@ -1,0 +1,32 @@
+pipeline {
+    agent { label 'any' }
+
+    stages {
+        stage('Checkout Code From Git') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/NolaniA/ttb-spark-test-automation.git'
+            }
+        }
+
+        stage('Run Test Automate') {
+            steps {
+                catchError(
+                    buildResult: 'UNSTABLE',
+                    stageResult: 'FAILURE'
+                ) {
+                    bat 'python -m robot -d results .'
+                }
+            }
+        }
+
+        stage('Send Result To Jenkins') {
+            steps {
+                robot outputPath: 'results',
+                      outputFileName: 'output.xml',
+                      logFileName: 'log.html',
+                      reportFileName: 'report.html'
+            }
+        }
+    }
+}
